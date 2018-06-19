@@ -3,7 +3,7 @@
 import os, sys
 from variables import path
 
-with open(path+'limpiado.txt') as f:
+with open(path+"\\output\\datos_fuentes_limpiado.txt") as f:
     seen = set()
     for line in f:
         line_lower = line.lower()

@@ -18,16 +18,18 @@ function yellow() {
 }
 
 case "$1" in
-  go)
+  migrate_to_bitbucket)
+    cd src
     green "CAPTURANDO LISTADO PARA BAJADA DE FUENTES"
     python listado_fuentes.py
     green "LIMPIANDO ARCHIVO DE LISTADO"
     python limpiar_listado.py
-    green "ELIMINANDO FILAS DUPLICADAS"
-    python eliminar_duplicidad.py
-    green "ORDENANDO ARCHIVO"
-    python ordenar_archivo.py
     green "BAJANDO FUENTES"
     python bajar_fuentes.py
+    green "PUSHEANDO REPOSITORIOS"
+    python push_packages.py
+    ;;
+  migrate_to_harvest)
+    
     ;;
 esac

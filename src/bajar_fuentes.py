@@ -8,37 +8,19 @@ from variables import (
 	enHarv, 
 	ambHarv, 
 	modoHarv,
-	path,
+	path as path_principal,
 )
+from limpiar_listado import packages_n
 
-repo = path+"entrada"
-bajada = path+"\\bajada"
-perso = path+"pers"
+logh = path_principal+"logHarvest"
 
-empre = path+"empr"
-logh = path+"logHarvest"
+if os.path.isdir(path_principal+'\\repositorios_harvest') == False:
+	os.system('mkdir '+path_principal+'\\repositorios_harvest')
 
-# Funcion para extraer los paquetes
-packages = []
-with open(path+'\\output\\datos_fuentes_limpiado.txt','r') as archivo_leido:
-	for line in archivo_leido:
-		for word in line.split():
-			#extensiones.append(word.rpartition('.')[-1])
-			if 'PG-' in word:
-				packages.append(word)
+path_repo = path_principal+'\\repositorios_harvest'
 
-# Funcion para extraer una unica vez los paquetes de las fuentes
-packages_n = []
-for package in packages:
-	if package in packages_n:
-		continue
-	else:
-		packages_n.append(package)
-
-o = 0
 for package in packages_n:
 	os.system('hco -b '+servHarv+' -usr '+usuharv+' -pw '+
-    	passharv+' -en "'+enHarv+'" -st "'+ambHarv+'" -vp '+"\\"+
-		' -cp "'+bajada+'\\package-'+str(o)+'" -op pc -pf "'+package+
+	   	passharv+' -en "'+enHarv+'" -st "'+ambHarv+'" -vp '+"\\"+
+		' -cp "'+path_repo+'\\'+package+'" -op pc -pf "'+package+
 		'" -pn "'+modoHarv+'" -s *.* -br replace rw -oa '+logh+'\\hco.log')
-	o =+ 1
