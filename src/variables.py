@@ -8,11 +8,11 @@ import os
 path_ubicado = os.getcwd()
 path = os.path.abspath(os.path.join(path_ubicado, '..'))
 
-servHarv = 'srv-wharvestprd'
-usuharv = 'despliegue'
-passharv = 'automata'
-enHarv = 'BCI - Modelo desarrollo paralelo'
-ambHarv = 'Produccion'
-modoHarv = 'Check Out for Browse'
+servHarv = ''
+usuharv = ''
+passharv = ''
+enHarv = ''
+ambHarv = ''
+modoHarv = ''
 
-NAME_ORGANIZATION_BITBUCKET = "BancodeCreditoeInversiones"
+NAME_ORGANIZATION_BITBUCKET = ""
